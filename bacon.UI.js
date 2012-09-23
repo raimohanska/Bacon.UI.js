@@ -4,10 +4,9 @@
     function getValue() { return textfield.val() }
     return $(textfield).asEventStream("keyup").map(getValue).toProperty(getValue())
   }
-  Bacon.UI.click = function(element) {
-    return element.asEventStream("click")
+  Bacon.Observable.prototype.pending = function(src) {
+    return src.map(true).merge(this.map(false)).toProperty(false)
   }
-  Bacon.UI.pendingAjax = function(request, response) {
-    return request.map(true).merge(response.map(false)).toProperty(false)
+  Bacon.EventStream.prototype.ajax = function(valueToAjaxParams) {
+    return this.switch(function(value) { return Bacon.fromPromise($.ajax(valueToAjaxParams(value))) })
   }
-})();
