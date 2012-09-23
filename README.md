@@ -1,0 +1,1 @@
+Some helpers for constructing jQuery UIs with Bacon.js.
