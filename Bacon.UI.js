@@ -10,3 +10,4 @@
   Bacon.EventStream.prototype.ajax = function(valueToAjaxParams) {
     return this.switch(function(value) { return Bacon.fromPromise($.ajax(valueToAjaxParams(value))) })
   }
+})();
