@@ -8,11 +8,12 @@ Returns the value of a textfield (jQuery object) as a Property. Currently bound 
 
 ### Bacon.EventStream.ajax(fn)
 
-Performs an AJAX request on each event of your stream, collating results in the result stream. The `fn` param should be a function that accepts a value from the source stream and returns parameters object for the AJAX call.
+Performs an AJAX request on each event of your stream, collating results in the result stream. 
 
-    var usernameAvailable = username.changes().ajax(function(username) { 
-      return { type: "get", url: "/usernameavailable/" + username} 
-    })
+The source stream is expected to provide the parameters for the AJAX call.
+
+    var usernameRequest = username.map(function(un) { return { type: "get", url: "/usernameavailable/" + un } })
+    var usernameAvailable = username.changes().ajax(
     
 ### Bacon.Observable.pending(src)
 
