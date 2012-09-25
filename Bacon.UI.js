@@ -7,7 +7,7 @@
   Bacon.Observable.prototype.pending = function(src) {
     return src.map(true).merge(this.map(false)).toProperty(false)
   }
-  Bacon.EventStream.prototype.ajax = function(valueToAjaxParams) {
-    return this.switch(function(value) { return Bacon.fromPromise($.ajax(valueToAjaxParams(value))) })
+  Bacon.EventStream.prototype.ajax = function() {
+    return this.switch(function(params) { return Bacon.fromPromise($.ajax(params)) })
   }
 })();
