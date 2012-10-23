@@ -10,6 +10,12 @@ Returns the value of a textfield (jQuery object) as a Property. Currently bound 
 
 Returns the value of an option field (jQuery object) as a Property.
 
+### Bacon.UI.checkBoxGroupValue(checkBoxes)
+
+Returns the value of a checkbox group (jQuery object representing multiple checkboxes) as a Property.
+
+The value will be an array containing the values of selected checkboxes.
+
 ### Bacon.EventStream.ajax(fn)
 
 Performs an AJAX request on each event of your stream, collating results in the result stream. 
