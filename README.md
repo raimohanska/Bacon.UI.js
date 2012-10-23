@@ -6,6 +6,10 @@ Returns the value of a textfield (jQuery object) as a Property. Currently bound 
 
     var username = Bacon.UI.textFieldValue($("#username"))
 
+### Bacon.UI.optionValue(optionField)
+
+Returns the value of an option field (jQuery object) as a Property.
+
 ### Bacon.EventStream.ajax(fn)
 
 Performs an AJAX request on each event of your stream, collating results in the result stream. 
