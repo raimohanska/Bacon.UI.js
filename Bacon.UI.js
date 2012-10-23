@@ -10,7 +10,7 @@
   }
   Bacon.UI.checkBoxGroupValue = function(checkboxes) {
     function selectedValues() {
-      return checkboxes.filter(":checked").map(function(i, elem) { return $(elem).val()})
+      return checkboxes.filter(":checked").map(function(i, elem) { return $(elem).val()}).toArray()
     }
     return checkboxes.asEventStream("click").map(selectedValues).toProperty(selectedValues())
   }
