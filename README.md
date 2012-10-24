@@ -2,7 +2,7 @@ Some helpers for constructing jQuery UIs with Bacon.js. This is stuff that I've 
 
 ### Bacon.UI.textFieldValue(textfield)
 
-Returns the value of a textfield (jQuery object) as a Property. Currently bound to keyups, mouseups, blur, cut, paste.
+Returns the value of a textfield (jQuery object) as a Property. Currently bound to keyups, input, cut, paste.
 
     var username = Bacon.UI.textFieldValue($("#username"))
 

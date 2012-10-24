@@ -2,7 +2,7 @@
   Bacon.UI = {}
   Bacon.UI.textFieldValue = function(textfield) {
     function getValue() { return textfield.val() }
-    return $(textfield).asEventStream("keyup mouseup blur").
+    return $(textfield).asEventStream("keyup input").
              merge($(textfield).asEventStream("cut paste").delay(1)).
              map(getValue).skipDuplicates().toProperty(getValue())
   }
