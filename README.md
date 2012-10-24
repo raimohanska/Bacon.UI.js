@@ -10,11 +10,19 @@ Returns the value of a textfield (jQuery object) as a Property. Currently bound 
 
 Returns the value of an option field (jQuery object) as a Property.
 
-### Bacon.UI.checkBoxGroupValue(checkBoxes)
+### Bacon.UI.checkBoxGroupValue(checkBoxes, initValue)
 
-Returns the value of a checkbox group (jQuery object representing multiple checkboxes) as a Property.
+Returns the value of a checkbox group (jQuery object representing multiple checkboxes) as a Property. The value will be an array containing the values of selected checkboxes. The optional `initValue` param can be used to set the initial state.
 
-The value will be an array containing the values of selected checkboxes.
+Now suppose you have three checkboxes for selecting the media for customer contacts:
+
+    <input type="checkbox" value="email"/>
+    <input type="checkbox" value="sms"/>
+    <input type="checkbox" value="snailmail"/>
+
+To set up a property containing selected media, with "sms" initially selected:
+
+    var selectedMedia = Bacon.UI.checkBoxGroupValue($("input"), ["sms"])
 
 ### Bacon.EventStream.ajax(fn)
 

@@ -10,9 +10,14 @@
     function getValue() { return option.val() }
     return option.asEventStream("change").map(getValue).toProperty(getValue())
   }
-  Bacon.UI.checkBoxGroupValue = function(checkboxes) {
+  Bacon.UI.checkBoxGroupValue = function(checkboxes, initValue) {
     function selectedValues() {
       return checkboxes.filter(":checked").map(function(i, elem) { return $(elem).val()}).toArray()
+    }
+    if (initValue) {
+      checkboxes.each(function(i, elem) {
+        $(elem).attr("checked", initValue.indexOf($(elem).val()) >= 0)
+      })
     }
     return checkboxes.asEventStream("click").map(selectedValues).toProperty(selectedValues())
   }
