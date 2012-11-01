@@ -1,13 +1,25 @@
 (function() {
+  var isChrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
+  function nonEmpty(x) { return x && x.length > 0 }
+
   Bacon.UI = {}
   Bacon.UI.textFieldValue = function(textfield) {
     function getValue() { return textfield.val() }
+    function autofillPoller() {
+      if (textfield.attr("type") == "password")
+        return Bacon.interval(100)
+      else if (isChrome)
+        return Bacon.interval(100).take(20).map(getValue).filter(nonEmpty).take(1)
+      else
+        return Bacon.never()
+    }
     return $(textfield).asEventStream("keyup input").
-             merge($(textfield).asEventStream("cut paste").delay(1)).
-             map(getValue).skipDuplicates().toProperty(getValue())
+      merge($(textfield).asEventStream("cut paste").delay(1)).
+      merge(autofillPoller()).
+      map(getValue).skipDuplicates().toProperty(getValue())
   }
   Bacon.UI.optionValue = function(option) {
-    function getValue() { return option.val() }
+    function getValue() { return option.val() }
     return option.asEventStream("change").map(getValue).toProperty(getValue())
   }
   Bacon.UI.checkBoxGroupValue = function(checkboxes, initValue) {
