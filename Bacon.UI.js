@@ -37,6 +37,6 @@
     return src.map(true).merge(this.map(false)).toProperty(false)
   }
   Bacon.EventStream.prototype.ajax = function() {
-    return this.switch(function(params) { return Bacon.fromPromise($.ajax(params)) })
+    return this["switch"](function(params) { return Bacon.fromPromise($.ajax(params)) })
   }
 })();
