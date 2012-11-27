@@ -3,7 +3,7 @@
   function nonEmpty(x) { return x && x.length > 0 }
 
   Bacon.UI = {}
-  Bacon.UI.textFieldValue = function(textfield) {
+  Bacon.UI.textFieldValue = function(textfield, initValue) {
     function getValue() { return textfield.val() }
     function autofillPoller() {
       if (textfield.attr("type") == "password")
@@ -13,10 +13,13 @@
       else
         return Bacon.never()
     }
-    return $(textfield).asEventStream("keyup input").
-      merge($(textfield).asEventStream("cut paste").delay(1)).
+    if (initValue !== null) {
+      textfield.val(initValue)
+    }
+    return textfield.asEventStream("keyup input").
+      merge(textfield.asEventStream("cut paste").delay(1)).
       merge(autofillPoller()).
-      map(getValue).skipDuplicates().toProperty(getValue())
+      map(getValue).toProperty(getValue()).skipDuplicates()
   }
   Bacon.UI.optionValue = function(option) {
     function getValue() { return option.val() }
@@ -39,4 +42,9 @@
   Bacon.EventStream.prototype.ajax = function() {
     return this["switch"](function(params) { return Bacon.fromPromise($.ajax(params)) })
   }
+  Bacon.UI.radioGroupValue = function(options) {
+    var initialValue = options.filter(':checked').val()
+    return options.asEventStream("change").map('.target.value').toProperty(initialValue)
+  }
 })();
+
