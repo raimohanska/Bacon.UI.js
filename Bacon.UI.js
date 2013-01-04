@@ -36,11 +36,14 @@
     }
     return checkboxes.asEventStream("click").map(selectedValues).toProperty(selectedValues())
   }
+  Bacon.UI.ajax = function(params) {
+    return Bacon.fromPromise($.ajax(params))
+  }
   Bacon.Observable.prototype.pending = function(src) {
     return src.map(true).merge(this.map(false)).toProperty(false)
   }
   Bacon.EventStream.prototype.ajax = function() {
-    return this["switch"](function(params) { return Bacon.fromPromise($.ajax(params)) })
+    return this["switch"](Bacon.UI.ajax)
   }
   Bacon.UI.radioGroupValue = function(options) {
     var initialValue = options.filter(':checked').val()
