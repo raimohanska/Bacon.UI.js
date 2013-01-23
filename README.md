@@ -35,9 +35,10 @@ The source stream is expected to provide the parameters for the AJAX call.
     
 ### Bacon.Observable.pending(src)
 
-Use this on your AJAX response stream, and use the request stream as the "src" parameter. You'll get a property that indicates whether an AJAX request is currently pending.
+Use this on your AJAX request stream, and use the response stream as the "response" parameter. You'll get a property that indicates whether an AJAX request is currently pending.
 
 This is nice for displaying an "AJAX indicator" when a request is pending.
 
-    var usernamePending = usernameAvailable.pending(usernameChange)
+    var usernamePending = usernameAvailable.awaiting(usernameChange)
     usernamePending.assign($(".ajax-indicator"), "toggle")
+    
