@@ -40,7 +40,7 @@
     return Bacon.fromPromise($.ajax(params))
   }
   Bacon.Observable.prototype.awaiting = function(response) {
-    return this.map(true).merge(response.map(false)).toProperty(false)
+    return this.map(true).merge(response.map(false)).toProperty(false).skipDuplicates()
   }
   Bacon.EventStream.prototype.ajax = function() {
     return this["switch"](Bacon.UI.ajax)
