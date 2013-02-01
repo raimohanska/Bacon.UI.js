@@ -53,7 +53,10 @@
       return e.target.value;
     }).toProperty(init);
   };
-  Bacon.UI.checkBoxValue = function(checkbox) {
+  Bacon.UI.checkBoxValue = function(checkbox, initValue) {
+    if (initValue !== null) {
+      checkbox.attr("checked", initValue)
+    }
     function isChecked() { return !!checkbox.attr("checked") }
     return checkbox.asEventStream("change").map(isChecked).toProperty(isChecked()).skipDuplicates()
   }
