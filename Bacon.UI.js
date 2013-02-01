@@ -45,13 +45,14 @@
   Bacon.EventStream.prototype.ajax = function() {
     return this["switch"](Bacon.UI.ajax)
   }
-  Bacon.UI.radioGroupValue = function(options, initValue) {
-    var initialValue = options.filter(':checked').val()
-    if (initValue) {
-      options.filter("[value=" + initValue + "]").attr("checked", true)
+  Bacon.UI.radioGroupValue = function(radioButtons, init) {
+    if (init == null) {
+      init = radioButtons.val();
     }
-    return options.asEventStream("change").map('.target.value').toProperty(initialValue)
-  }
+    return radioButtons.asEventStream('change').map(function(e) {
+      return e.target.value;
+    }).toProperty(init);
+  };
   Bacon.UI.checkBoxValue = function(checkbox) {
     function isChecked() { return !!checkbox.attr("checked") }
     return checkbox.asEventStream("change").map(isChecked).toProperty(isChecked()).skipDuplicates()
