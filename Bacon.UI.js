@@ -43,7 +43,7 @@
     return this.map(true).merge(response.map(false)).toProperty(false).skipDuplicates()
   }
   Bacon.EventStream.prototype.ajax = function() {
-    return this["switch"](Bacon.UI.ajax)
+    return this.flatMapLatest(Bacon.UI.ajax)
   }
   Bacon.UI.radioGroupValue = function(radioButtons, init) {
     if (init == null) {
