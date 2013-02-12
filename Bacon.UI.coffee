@@ -44,23 +44,23 @@ Bacon.UI.ajaxPost = (url, data, dataType) -> Bacon.UI.ajax({url, dataType, data,
 Bacon.Observable::awaiting = (response) ->
   @map(true).merge(response.map(false)).toProperty(false).skipDuplicates()
 
-Bacon.EventStream::ajax = ->
-  @flatMapLatest Bacon.UI.ajax
+Bacon.EventStream::ajax = -> @flatMapLatest Bacon.UI.ajax
 
 Bacon.UI.radioGroupValue = (radioButtons, init) ->
-  init = radioButtons.val()  unless init?
-  radioButtons.asEventStream("change").map((e) ->
-    e.target.value
-  ).toProperty init
+  if init?
+    radioButtons.each (i, elem) ->
+      $(elem).attr "checked", true if elem.value is init
+  else init = radioButtons.filter(":checked").first().val()
+
+  radioButtons.asEventStream("change").map((e) -> e.target.value).toProperty init
 
 Bacon.UI.checkBoxValue = (checkbox, initValue) ->
-  isChecked = ->
-    !!checkbox.attr("checked")
-  checkbox.attr "checked", initValue  if initValue isnt null
+  isChecked = -> !!checkbox.attr("checked")
+  checkbox.attr "checked", initValue if initValue isnt null
   checkbox.asEventStream("change").map(isChecked).toProperty(isChecked()).skipDuplicates()
 
 Bacon.UI.hash = (defaultValue) ->
   getHash = ->
     (if !!document.location.hash then document.location.hash else defaultValue)
-  defaultValue = ""  if defaultValue is undefined
+  defaultValue = "" if defaultValue is undefined
   $(window).asEventStream("hashchange").map(getHash).toProperty(getHash()).skipDuplicates()
