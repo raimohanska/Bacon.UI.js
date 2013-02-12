@@ -37,9 +37,11 @@ Bacon.UI.ajax = (params) -> Bacon.fromPromise $.ajax(params)
 
 Bacon.UI.ajaxGet = (url, data, dataType) -> Bacon.UI.ajax({url, dataType, data})       
 
-Bacon.UI.ajaxGetJSON = (url, data) -> Bacon.UI.ajax({url, dataType:"json", data})         
+Bacon.UI.ajaxGetJSON = (url, data) -> Bacon.UI.ajax({url, dataType: "json", data})         
 
-Bacon.UI.ajaxPost = (url, data, dataType) -> Bacon.UI.ajax({url, dataType, data, type:"POST"})
+Bacon.UI.ajaxPost = (url, data, dataType) -> Bacon.UI.ajax({url, dataType, data, type: "POST"})
+
+Bacon.UI.ajaxGetScript = (url) -> Bacon.UI.ajax({url, dataType: "script"})
 
 Bacon.Observable::awaiting = (response) ->
   @map(true).merge(response.map(false)).toProperty(false).skipDuplicates()
@@ -62,5 +64,5 @@ Bacon.UI.checkBoxValue = (checkbox, initValue) ->
 Bacon.UI.hash = (defaultValue) ->
   getHash = ->
     (if !!document.location.hash then document.location.hash else defaultValue)
-  defaultValue = "" if defaultValue is undefined
+  defaultValue = "" if defaultValue is `undefined`
   $(window).asEventStream("hashchange").map(getHash).toProperty(getHash()).skipDuplicates()
