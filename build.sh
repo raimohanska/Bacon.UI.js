@@ -1,0 +1,1 @@
+coffee -c Bacon.UI.coffee
