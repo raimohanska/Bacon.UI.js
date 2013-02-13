@@ -17,7 +17,9 @@ Bacon.UI.textFieldValue = (textfield, initValue) ->
   .merge(autofillPoller())
   .map(getValue).toProperty(getValue()).skipDuplicates()
 
-Bacon.UI.optionValue = (option) ->
+Bacon.UI.optionValue = (option, initVal) ->
+  if initVal?
+    option.val(initVal)
   getValue = -> option.val()
   option.asEventStream("change").map(getValue).toProperty getValue()
 
