@@ -6,9 +6,28 @@ Returns the value of a textfield (jQuery object) as a Property. Currently bound 
 
     var username = Bacon.UI.textFieldValue($("#username"))
 
-### Bacon.UI.optionValue(optionField)
+### Bacon.UI.optionValue(optionField, initValue)
 
 Returns the value of an option field (jQuery object) as a Property.
+
+Optionally, you can define `initValue`, which will set it as the initial value
+of the underlying `<select>` HTML element.
+
+#### Example usage:
+
+Given HTML like this:
+
+    <select id="doneness-level">
+      <option value="raw">Raw doneness level</option>
+      <option value="medium">Medium doneness level</option>
+    </select>
+
+You can do like this:
+
+    var baconRoastingLevel = Bacon.UI.optionValue(
+      $('#doneness-level'),
+      'medium' // Set the select element initially to value "medium"
+    )
 
 ### Bacon.UI.checkBoxGroupValue(checkBoxes, initValue)
 
