@@ -63,8 +63,16 @@ This is nice for displaying an "AJAX indicator" while waiting for the response.
 
 ## Running tests
 
+### On command-line interface
+
 1. Install <http://phantomjs.org/>
 2. `./run-tests.sh`
+
+### On browser
+
+1. Install <http://phantomjs.org/>
+2. `python -m SimpleHTTPServer 9999`
+3. go to <http://localhost:9999/test/runner.html>
 
 ### Running tests on Travis-ci.org
 
