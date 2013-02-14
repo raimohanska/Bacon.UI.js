@@ -45,13 +45,13 @@ To set up a property containing selected media, with "sms" initially selected:
 
 ### Bacon.EventStream.ajax(fn)
 
-Performs an AJAX request on each event of your stream, collating results in the result stream. 
+Performs an AJAX request on each event of your stream, collating results in the result stream.
 
 The source stream is expected to provide the parameters for the AJAX call.
 
     var usernameRequest = username.map(function(un) { return { type: "get", url: "/usernameavailable/" + un } })
     var usernameAvailable = username.changes().ajax(
-    
+
 ### Bacon.Observable.awaiting(response)
 
 Use this on your AJAX request stream, and use the response stream as the "response" parameter. You'll get a property that indicates whether an AJAX request is currently pending.
@@ -60,4 +60,12 @@ This is nice for displaying an "AJAX indicator" while waiting for the response.
 
     var usernamePending = usernameAvailable.awaiting(usernameChange)
     usernamePending.assign($(".ajax-indicator"), "toggle")
-    
+
+## Running tests
+
+1. Install <http://phantomjs.org/>
+2. `./run-tests.sh`
+
+### Running tests on Travis-ci.org
+
+It can be done. Are you the one to do this?
