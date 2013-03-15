@@ -68,3 +68,18 @@ Bacon.UI.hash = (defaultValue) ->
     (if !!document.location.hash then document.location.hash else defaultValue)
   defaultValue = "" if defaultValue is `undefined`
   $(window).asEventStream("hashchange").map(getHash).toProperty(getHash()).skipDuplicates()
+
+$.fn.extend
+  animateE: (args...) -> Bacon.fromPromise @animate(args...).promise()
+  showE: (args...) -> Bacon.fromPromise @show(args...).promise()
+  hideE: (args...)-> Bacon.fromPromise @hide(args...).promise()
+  toggleE: (args...) -> Bacon.fromPromise @toggle(args...).promise()
+
+  fadeInE: (args...) -> Bacon.fromPromise @fadeIn(args...).promise()
+  fadeOutE: (args...) -> Bacon.fromPromise @fadeOut(args...).promise()
+  fadeToE: (args...) -> Bacon.fromPromise @fadeTo(args...).promise()
+  fadeToggleE: (args...) -> Bacon.fromPromise @fadeToggle(args...).promise()
+
+  slideDownE: (args...) -> Bacon.fromPromise @slideDown(args...).promise()
+  slideUpE: (args...) -> Bacon.fromPromise @slideUp(args...).promise()
+  slideToggleE: (args...) -> Bacon.fromPromise @slideToggle(args...).promise()
