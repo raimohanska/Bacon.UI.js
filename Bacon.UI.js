@@ -143,6 +143,124 @@
   };
 
   $.fn.extend({
+    keydownE: function() {
+      var args;
+      args = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
+      return this.asEventStream.apply(this, ["keydown"].concat(__slice.call(args)));
+    },
+    keyupE: function() {
+      var args;
+      args = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
+      return this.asEventStream.apply(this, ["keyup"].concat(__slice.call(args)));
+    },
+    keypressE: function() {
+      var args;
+      args = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
+      return this.asEventStream.apply(this, ["keypress"].concat(__slice.call(args)));
+    },
+    clickE: function() {
+      var args;
+      args = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
+      return this.asEventStream.apply(this, ["click"].concat(__slice.call(args)));
+    },
+    dblclickE: function() {
+      var args;
+      args = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
+      return this.asEventStream.apply(this, ["dblclick"].concat(__slice.call(args)));
+    },
+    mousedownE: function() {
+      var args;
+      args = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
+      return this.asEventStream.apply(this, ["mousedown"].concat(__slice.call(args)));
+    },
+    mouseupE: function() {
+      var args;
+      args = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
+      return this.asEventStream.apply(this, ["mouseup"].concat(__slice.call(args)));
+    },
+    mouseenterE: function() {
+      var args;
+      args = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
+      return this.asEventStream.apply(this, ["mouseenter"].concat(__slice.call(args)));
+    },
+    mouseleaveE: function() {
+      var args;
+      args = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
+      return this.asEventStream.apply(this, ["mouseleave"].concat(__slice.call(args)));
+    },
+    mousemoveE: function() {
+      var args;
+      args = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
+      return this.asEventStream.apply(this, ["mousemove"].concat(__slice.call(args)));
+    },
+    mouseoutE: function() {
+      var args;
+      args = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
+      return this.asEventStream.apply(this, ["mouseout"].concat(__slice.call(args)));
+    },
+    mouseoverE: function() {
+      var args;
+      args = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
+      return this.asEventStream.apply(this, ["mouseover"].concat(__slice.call(args)));
+    },
+    resizeE: function() {
+      var args;
+      args = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
+      return this.asEventStream.apply(this, ["resize"].concat(__slice.call(args)));
+    },
+    scrollE: function() {
+      var args;
+      args = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
+      return this.asEventStream.apply(this, ["scroll"].concat(__slice.call(args)));
+    },
+    selectE: function() {
+      var args;
+      args = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
+      return this.asEventStream.apply(this, ["select"].concat(__slice.call(args)));
+    },
+    changeE: function() {
+      var args;
+      args = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
+      return this.asEventStream.apply(this, ["change"].concat(__slice.call(args)));
+    },
+    submitE: function() {
+      var args;
+      args = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
+      return this.asEventStream.apply(this, ["submit"].concat(__slice.call(args)));
+    },
+    blurE: function() {
+      var args;
+      args = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
+      return this.asEventStream.apply(this, ["blur"].concat(__slice.call(args)));
+    },
+    focusE: function() {
+      var args;
+      args = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
+      return this.asEventStream.apply(this, ["focus"].concat(__slice.call(args)));
+    },
+    focusinE: function() {
+      var args;
+      args = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
+      return this.asEventStream.apply(this, ["focusin"].concat(__slice.call(args)));
+    },
+    focusoutE: function() {
+      var args;
+      args = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
+      return this.asEventStream.apply(this, ["focusout"].concat(__slice.call(args)));
+    },
+    loadE: function() {
+      var args;
+      args = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
+      return this.asEventStream.apply(this, ["load"].concat(__slice.call(args)));
+    },
+    unloadE: function() {
+      var args;
+      args = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
+      return this.asEventStream.apply(this, ["unload"].concat(__slice.call(args)));
+    }
+  });
+
+  $.fn.extend({
     animateE: function() {
       var args;
       args = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
