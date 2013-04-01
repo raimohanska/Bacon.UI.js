@@ -52,15 +52,6 @@ The source stream is expected to provide the parameters for the AJAX call.
     var usernameRequest = username.map(function(un) { return { type: "get", url: "/usernameavailable/" + un } })
     var usernameAvailable = username.changes().ajax()
 
-### Bacon.Observable.awaiting(response)
-
-Use this on your AJAX request stream, and use the response stream as the "response" parameter. You'll get a property that indicates whether an AJAX request is currently pending.
-
-This is nice for displaying an "AJAX indicator" while waiting for the response.
-
-    var usernamePending = usernameAvailable.awaiting(usernameChange)
-    usernamePending.assign($(".ajax-indicator"), "toggle")
-
 ## Running tests
 
 ### On command-line interface
