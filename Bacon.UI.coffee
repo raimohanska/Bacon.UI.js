@@ -35,7 +35,7 @@ Bacon.UI.checkBoxGroupValue = (checkboxes, initValue) ->
 
   checkboxes.asEventStream("click").map(selectedValues).toProperty selectedValues()
 
-Bacon.UI.ajax = (params) -> Bacon.fromAjaxPromise $.ajax(params)
+Bacon.UI.ajax = (params) -> Bacon.fromPromise $.ajax(params)
 
 Bacon.UI.ajaxGet = (url, data, dataType) -> Bacon.UI.ajax({url, dataType, data})       
 
