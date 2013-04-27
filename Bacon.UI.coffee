@@ -35,15 +35,15 @@ Bacon.UI.checkBoxGroupValue = (checkboxes, initValue) ->
 
   checkboxes.asEventStream("click").map(selectedValues).toProperty selectedValues()
 
-Bacon.UI.ajax = (params) -> Bacon.fromPromise $.ajax(params)
+Bacon.UI.ajax = (params, abort) -> Bacon.fromPromise $.ajax(params), abort
 
-Bacon.UI.ajaxGet = (url, data, dataType) -> Bacon.UI.ajax({url, dataType, data})       
+Bacon.UI.ajaxGet = (url, data, dataType, abort) -> Bacon.UI.ajax({url, dataType, data}, abort)       
 
-Bacon.UI.ajaxGetJSON = (url, data) -> Bacon.UI.ajax({url, dataType: "json", data})         
+Bacon.UI.ajaxGetJSON = (url, data, abort) -> Bacon.UI.ajax({url, dataType: "json", data}, abort)         
 
-Bacon.UI.ajaxPost = (url, data, dataType) -> Bacon.UI.ajax({url, dataType, data, type: "POST"})
+Bacon.UI.ajaxPost = (url, data, dataType, abort) -> Bacon.UI.ajax({url, dataType, data, type: "POST"}, abort)
 
-Bacon.UI.ajaxGetScript = (url) -> Bacon.UI.ajax({url, dataType: "script"})
+Bacon.UI.ajaxGetScript = (url, abort) -> Bacon.UI.ajax({url, dataType: "script"}, abort)
 
 Bacon.Observable::awaiting = (response) ->
   @map(true).merge(response.map(false)).toProperty(false).skipDuplicates()
