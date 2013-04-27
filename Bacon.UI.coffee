@@ -1,5 +1,6 @@
 nonEmpty = (x) -> x and x.length > 0
 isChrome = navigator.userAgent.toLowerCase().indexOf("chrome") > -1
+
 Bacon.UI = {}
 
 Bacon.UI.textFieldValue = (textfield, initValue) ->
