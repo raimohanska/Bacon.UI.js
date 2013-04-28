@@ -57,40 +57,40 @@
     return checkboxes.asEventStream("click").map(selectedValues).toProperty(selectedValues());
   };
 
-  Bacon.UI.ajax = function(params) {
-    return Bacon.fromPromise($.ajax(params));
+  Bacon.UI.ajax = function(params, abort) {
+    return Bacon.fromPromise($.ajax(params), abort);
   };
 
-  Bacon.UI.ajaxGet = function(url, data, dataType) {
+  Bacon.UI.ajaxGet = function(url, data, dataType, abort) {
     return Bacon.UI.ajax({
       url: url,
       dataType: dataType,
       data: data
-    });
+    }, abort);
   };
 
-  Bacon.UI.ajaxGetJSON = function(url, data) {
+  Bacon.UI.ajaxGetJSON = function(url, data, abort) {
     return Bacon.UI.ajax({
       url: url,
       dataType: "json",
       data: data
-    });
+    }, abort);
   };
 
-  Bacon.UI.ajaxPost = function(url, data, dataType) {
+  Bacon.UI.ajaxPost = function(url, data, dataType, abort) {
     return Bacon.UI.ajax({
       url: url,
       dataType: dataType,
       data: data,
       type: "POST"
-    });
+    }, abort);
   };
 
-  Bacon.UI.ajaxGetScript = function(url) {
+  Bacon.UI.ajaxGetScript = function(url, abort) {
     return Bacon.UI.ajax({
       url: url,
       dataType: "script"
-    });
+    }, abort);
   };
 
   Bacon.Observable.prototype.awaiting = function(response) {
