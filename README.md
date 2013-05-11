@@ -52,6 +52,25 @@ The source stream is expected to provide the parameters for the AJAX call.
     var usernameRequest = username.map(function(un) { return { type: "get", url: "/usernameavailable/" + un } })
     var usernameAvailable = username.changes().ajax()
 
+Install
+=======
+
+You can download the latest [generated javascript](https://raw.github.com/raimohanska/Bacon.UI.js/master/Bacon.UI.js).
+
+..or you can use script tags to include this file directly from Github:
+
+```html
+<script src="https://raw.github.com/raimohanska/Bacon.UI.js/master/Bacon.UI.js"></script>
+```
+
+If you're targeting to [node.js](http://nodejs.org/), you can
+
+    npm install baconui
+
+For [bower](https://github.com/twitter/bower) users:
+
+    bower install bacon-ui
+    
 ## Running tests
 
 ### On command-line interface
