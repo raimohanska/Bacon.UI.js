@@ -1,0 +1,13 @@
+{
+  "name": "bacon-ui",
+  "version": "0.1.0",
+  "author": "Juha Paananen",
+  "licenses": [
+    "MIT"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "coffee-script": "~1.4.0",
+  },
+  "main": "./Bacon.UI.js"
+}
