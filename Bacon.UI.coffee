@@ -46,9 +46,6 @@ Bacon.UI.ajaxPost = (url, data, dataType, abort) -> Bacon.UI.ajax({url, dataType
 
 Bacon.UI.ajaxGetScript = (url, abort) -> Bacon.UI.ajax({url, dataType: "script"}, abort)
 
-Bacon.Observable::awaiting = (response) ->
-  @map(true).merge(response.map(false)).toProperty(false).skipDuplicates()
-
 Bacon.EventStream::ajax = -> @flatMapLatest Bacon.UI.ajax
 
 Bacon.UI.radioGroupValue = (radioButtons, init) ->
