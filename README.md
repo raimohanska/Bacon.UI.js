@@ -1,4 +1,4 @@
-**Note**: I'm not maintaining this library any more. Please try the [bacon-jquery-bindings](https://github.com/raimohanska/bacon-jquery-bindings) library instead!
+**Note**: I'm not maintaining this library any more. Please try the [bacon-jquery](https://github.com/baconjs/bacon.jquery) library instead!
 
 
 
